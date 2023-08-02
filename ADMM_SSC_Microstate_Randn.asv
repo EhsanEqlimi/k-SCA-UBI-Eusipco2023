@@ -4,7 +4,7 @@ m=64;
 n=4;
 k=2;
 %% Test On randn sources
-T= 2000;%c*30; %1000; % The Number of data poins a.k.a the number of samples (time points)
+T= 120;%c*30; %1000; % The Number of data poins a.k.a the number of samples (time points)
 % zero sources (non-strict saprsity)
 AMode=0; % k-SCA Condition for A is satisfied
 Iter_Num_A=1000;% The number of iteration to generate a good mixing matrix
@@ -35,11 +35,40 @@ for i=1:n
     subplot(n,1,i)
     plot(1:size(S,2),S(i,:),ColorLab{i})
 end
-%% 
+%% Anaraki
+affine = false;
+C_ref = zeros(size(X,2));
+XtX     = X'*X; % n x n
+temp    = abs( XtX - diag(diag(XtX)) );
+lambdaE = 10/min(max(temp));
+% === use ADMM solver
+% It works, but to get high precision, need to play around with alpha_rho a
+% lot, in order to get a good rho value
+errFcn  = @(C) norm( C - C_ref, 'fro')/norm(C_ref,'fro');
+[C,errHist,resid,objective,parameters] = SSC_viaADMM(X, ...
+    'errFcn', errFcn, 'lambda', lambdaE, 'maxIter', 3e4, 'printEvery', 5e2,...
+    'tol', 1e-12, 'affine', affine, 'alpha_rho', 10, 'adaptiveRho', true );
+errHist_linear_ADMM = errHist(:,1);
+% GroundTruthLables=Labels;
+% alpha=10;
+% r = 0; affine = false; outlier = true; rho = 1.5;
+% [missrate,CMat] = SSC_viaADMM(X,r,affine,alpha,outlier,rho,GroundTruthLables);
+% === plot
+figure(1); clf;
+semilogy( errHist_linear_ADMM );
+hold all
+% semilogy( errHist_linear_proxGrad );
+set(gca,'fontsize',18);
+legend('Error vs CVX (ADMM)', 'Error vs CVX (Prox Gradient)' );
+xlabel('iteration');
+ylabel('error');
+title('Errors (linear subspace case, no affine constraint)');
+%Elhamifar
 GroundTruthLables=Labels;
 alpha=10;
 r = 0; affine = false; outlier = true; rho = 1.5;
-[missrate,C,grps,Clus] = SSC(X,r,affine,alpha,outlier,rho,GroundTruthLables);
+% [missrate,C,grps,Clus] = SSC(X,r,affine,alpha,outlier,rho,GroundTruthLables);
+[missrate,CMat] =SSC(X,r,affine,alpha,outlier,rho,GroundTruthLables);
 Sub=FnSubspaceCalc(X,grps',1,Actualc);
 Subb=squeeze(Sub)
 figure,stem(grps)

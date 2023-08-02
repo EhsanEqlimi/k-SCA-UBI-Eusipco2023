@@ -48,11 +48,21 @@ errFcn  = @(C) norm( C - C_ref, 'fro')/norm(C_ref,'fro');
 [C,errHist,resid,objective,parameters] = SSC_viaADMM(X, ...
     'errFcn', errFcn, 'lambda', lambdaE, 'maxIter', 3e4, 'printEvery', 5e2,...
     'tol', 1e-12, 'affine', affine, 'alpha_rho', 10, 'adaptiveRho', true );
-errHist_linear_ADMM = errHist(:,2);
+errHist_linear_ADMM = errHist(:,1);
 % GroundTruthLables=Labels;
 % alpha=10;
 % r = 0; affine = false; outlier = true; rho = 1.5;
 % [missrate,CMat] = SSC_viaADMM(X,r,affine,alpha,outlier,rho,GroundTruthLables);
+% === plot
+figure(1); clf;
+semilogy( errHist_linear_ADMM );
+hold all
+% semilogy( errHist_linear_proxGrad );
+set(gca,'fontsize',18);
+legend('Error vs CVX (ADMM)', 'Error vs CVX (Prox Gradient)' );
+xlabel('iteration');
+ylabel('error');
+title('Errors (linear subspace case, no affine constraint)');
 
 %Elhamifar
 GroundTruthLables=Labels;

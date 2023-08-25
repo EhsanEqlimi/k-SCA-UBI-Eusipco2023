@@ -73,6 +73,7 @@ if (~affine)
     i = 1;
     % ADMM iterations
     while ( (err1(i) > thr1 || err2(i) > thr2) && i < maxIter )
+        disp(i);
         % updating Z
         Z = A * (mu1*P'*(Y+Lambda1/mu1)+mu2*(C1-Lambda2/mu2));
         Z(1:N,:) = Z(1:N,:) - diag(diag(Z(1:N,:)));

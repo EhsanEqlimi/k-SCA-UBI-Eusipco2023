@@ -84,7 +84,7 @@
 % August   2005 - Specification of distfn changed to allow model fitter to
 %                 return multiple models from which the best must be selected.
 
-function [M, inliers] = ransac(x, fittingfn, distfn, degenfn, s, t,maxTrials,p,feedback)
+function [M, inliers,dist2] = ransac_MSFreq(x, fittingfn, distfn, degenfn, s, t,maxTrials,p,feedback)
     M=[];
     if nargin == 8
 	feedback = 0;

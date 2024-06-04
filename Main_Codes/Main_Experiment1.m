@@ -12,15 +12,15 @@ warning off
 %% Preliminaries
 % mAll=[3 4 5]; % The number of sensors a.k.a the ambient dimension
 % nAll=[10 8 7]; % The number of sources
-mAll=[5]; % The number of sensors a.k.a the ambient dimension
-nAll=[6]; % The number of sources
+mAll=[3]; % The number of sensors a.k.a the ambient dimension
+nAll=[4]; % The number of sources
 % mAll=[4]; % The number of sensors a.k.a the ambient dimension
 % nAll=[8]; % The number of sources
 
 % SigmaAll=[0 1e-4 1e-3]; % Parameter controls the standard deviation of normal noise over the
 SigmaAll=[0]; % Parameter controls the standard deviation of normal noise over the
 
-for IterLopp=1:1
+for IterLopp=1:10
     Sigma=SigmaAll(1);
     
     for mLoop=1:length(mAll)

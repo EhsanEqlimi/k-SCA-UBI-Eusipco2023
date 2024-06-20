@@ -2,7 +2,7 @@
 % This function estimates the mixing matrix. The argumants are defined in
 % the file test.m and the related paper.
 
-function [Ahat,B]=PKDSC(X, n, k, Sigma_B, Sigma_A, N_B, q, L_B, L_A, TH1, TH2, TH3)
+function [Ahat,B]=PKDSC_ee(X, n, k, Sigma_B, Sigma_A, N_B, q, L_B, L_A, TH1, TH2, TH3)
 m=size(X,1);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%       
 % This part estimates the concentration subsapces (first part of the algorithm).
@@ -12,16 +12,18 @@ m=size(X,1);
 ndifB=0;
 for j=1:L_B;
 %     j
+Count=0;
     sub_B=randn(m,k);
     sub_B=orth(sub_B);
     for sigma=Sigma_B
+        Count=Count+1;
         miu=10000*sigma^2;
         [sub_B,Dist_SubSub,f_B]=Maximizer_B_ee(X, sub_B, miu, sigma);
         
         sub_B=orth(sub_B);
         sub_B_All{j,Count}=sub_B;
         Dist_SubSub_All{j,Count}=Dist_SubSub;
-        f_B_Allj,Count}=f_B;
+        f_B_All{j,Count}=f_B;
     end
 
     if j==1

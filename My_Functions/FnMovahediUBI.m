@@ -52,4 +52,4 @@ TH3=.1;     %The treshold related to step 4 of the second part of the algorithm 
 % X=X./(ones(m,1)*sqrt(R));
 
 % Estimating the mixing matrix
-Ahat=PKDSC(X, n, k, Sigma_B, Sigma_A, N_B, q, L_B, L_A, TH1, TH2, TH3);
+Ahat=PKDSC_ee(X, n, k, Sigma_B, Sigma_A, N_B, q, L_B, L_A, TH1, TH2, TH3);

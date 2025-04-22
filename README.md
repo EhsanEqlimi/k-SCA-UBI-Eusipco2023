@@ -1,17 +1,17 @@
 # UBI-(m−1)-Sparsity Solver (Eusipco2023)
 
-## 📄 Home
+## Home
 
 Welcome to the **UBI-(m−1)-Sparsity Solver**!
 
 This repository provides the implementation for the method introduced in our paper:  
-📘 *"Eqlimi E, Makkiabadi B, Kouti M, Fotouhi A, Sanei S. Underdetermined Blind Identification via k-Sparse Component Analysis: RANSAC-driven Orthogonal Subspace Search. in proceeding of EUSICO 2023, Helsinki, Finland"*.
+ *"Eqlimi E, Makkiabadi B, Kouti M, Fotouhi A, Sanei S. Underdetermined Blind Identification via k-Sparse Component Analysis: RANSAC-driven Orthogonal Subspace Search. in proceeding of EUSICO 2023, Helsinki, Finland"*.
 
 Our algorithm addresses the challenge of **blind source separation** in the case where sources are sparse and the number of active sources at each time point equals *m–1*, where *m* is the number of sensors. This scenario often arises in real-world applications with high noise levels.
 
 ---
 
-## 🚀 Overview
+## Overview
 
 ### Problem
 
@@ -29,7 +29,7 @@ Existing k-SCA methods struggle when *k = m−1*, especially under noisy conditi
 
 ---
 
-## 🧠 Our Contribution
+## Our Contribution
 
 We propose a novel two-step method that works efficiently when *k = m−1*:
 

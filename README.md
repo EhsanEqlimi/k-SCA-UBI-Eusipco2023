@@ -5,7 +5,7 @@
 Welcome to the **UBI-(m−1)-Sparsity Solver**!
 
 This repository provides the implementation for the method introduced in our paper:  
-📘 *"An Efficient Method for Underdetermined Blind Identification of (m–1)-Sparse Sources"* (IEEE, 2023).
+📘 *"Eqlimi E, Makkiabadi B, Kouti M, Fotouhi A, Sanei S. Underdetermined Blind Identification via k-Sparse Component Analysis: RANSAC-driven Orthogonal Subspace Search. in proceeding of EUSICO 2023, Helsinki, Finland"*.
 
 Our algorithm addresses the challenge of **blind source separation** in the case where sources are sparse and the number of active sources at each time point equals *m–1*, where *m* is the number of sensors. This scenario often arises in real-world applications with high noise levels.
 

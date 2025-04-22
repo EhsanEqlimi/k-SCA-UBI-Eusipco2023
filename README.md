@@ -16,7 +16,7 @@ Our algorithm addresses the challenge of **blind source separation** in the case
 ### Problem
 
 **Underdetermined Blind Identification (UBI):**  
-Recovering source signals when there are more sources than sensors.
+Identifying mixing matrix when there are more sources than sensors.
 
 ### Traditional Approaches
 
@@ -37,6 +37,23 @@ We propose a novel two-step method that works efficiently when *k = m−1*:
 2. **Identify mixing vectors** using a Gram-Schmidt orthogonalization process.
 
 This approach is computationally efficient and robust to noise.
+
+## Contact
+
+For any inquiries or questions, you can contact the authors at the following email address:
+
+- **Ehsan Eqlimi**: `firstname.lastname at outlook.com`
+
+---
+
+## Reference
+
+Please cite the following paper (and future papers) if you use or benchmark this code:
+
+> Eqlimi E, Makkiabadi B, Kouti M, Fotouhi A, Sanei S.  
+> *Underdetermined Blind Identification via k-Sparse Component Analysis: RANSAC-driven Orthogonal Subspace Search.*  
+> In: Proceedings of the 31st European Signal Processing Conference (EUSIPCO); 2023 Aug; Helsinki, Finland.
+
 
 ---
 

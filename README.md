@@ -1,4 +1,4 @@
-# k-SCA-UBI-Eusipco2023
+# UBI-(m−1)-Sparsity Solver (Eusipco2023)
 
 ## 📄 Home
 
